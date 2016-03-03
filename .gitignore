@@ -1,0 +1,4 @@
+dist/**
+.gradle
+node_modules/**
+

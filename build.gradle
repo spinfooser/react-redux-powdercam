@@ -1,0 +1,44 @@
+//import com.moowork.gradle.gulp.task.GulpTask
+
+plugins {
+    id "com.moowork.node" version "0.11"
+}
+
+configurations {
+    compile
+}
+
+
+node {
+    // Version of node to use.
+    version = '5.7.1'
+
+    // Version of npm to use.
+    npmVersion = '3.8.0'
+
+    // Base URL for fetching node distributions (change if you have a mirror).
+    distBaseUrl = 'https://nodejs.org/dist'
+
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    download = true
+
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}")
+}
+
+task clean(type: Delete) {
+    delete "dist"
+}
+
+task build(dependsOn: "npmInstall", type: NpmTask) {
+    args = ['run', 'build']
+}
+
+task test(dependsOn: ["npmInstall"], type: NpmTask) {
+    args = ['test']
+}
+
+task run(dependsOn: "npmInstall", type: NpmTask) {
+    args = ['run', 'serve']
+}
