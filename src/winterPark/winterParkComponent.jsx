@@ -1,11 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-class WinterParkCamera extends React.Component {
+export default class WinterParkCamera extends React.Component {
     render() {
         return (
-            <div>Winter Park Image!</div>
+            <div><p>Winter Park Image!</p></div>
         );
     };
 }
-
-export default WinterParkCamera;
